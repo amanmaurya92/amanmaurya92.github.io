@@ -1,6 +1,8 @@
 import { AlertTriangle } from "lucide-react";
 
 export default function ApiErrorBanner({ message }) {
+  // Keep warnings visible in local/dev, but hide in production static deployments.
+  if (import.meta.env.PROD) return null;
   if (!message) return null;
 
   return (
