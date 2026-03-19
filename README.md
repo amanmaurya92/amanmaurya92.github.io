@@ -1,132 +1,47 @@
-# Aman's Portfolio Website
+# Portfolio — MERN stack
 
-A modern, interactive portfolio website built with the MERN Stack (MongoDB, Express, React, Node.js).
+**M**ongoDB · **E**xpress · **R**eact · **N**ode — this project is built and branded around the MERN stack.
 
-## 🚀 Features
+The API is **Express + Node** with a **React (Vite)** frontend. For zero-config local runs, profile/projects/experience are served from **`data/*.json`** (MongoDB-style documents without a live DB). Contact submissions go to **`data/contacts.json`** (gitignored). You can swap the file layer for MongoDB + Mongoose using the same route shapes.
 
-- Modern UI/UX with dark-themed design
-- Responsive layout for all devices
-- Full MERN Stack implementation
-- Dark/Light theme toggle
-- Smooth Framer Motion animations
-- Contact form with email integration
-- Project showcase with details
-- Skills display with categories
-
-## 📁 Project Structure
-
-```
-portfolio-web/
-├── config/db.js              # MongoDB connection
-├── models/                   # Database schemas
-│   ├── Contact.js
-│   └── Project.js
-├── routes/                   # API routes
-│   ├── config.js
-│   ├── contact.js
-│   └── projects.js
-├── client/                   # React frontend
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── context/
-│   │   ├── pages/
-│   │   ├── App.js
-│   │   └── index.js
-│   └── package.json
-├── server.js                 # Express server
-├── package.json              # Root dependencies
-└── .env.example              # Environment template
-```
-
-## 🛠️ Tech Stack
-
-### Frontend
-
-- React + React Router
-- Framer Motion (animations)
-- Lucide React (icons)
-- Axios (HTTP client)
-
-### Backend
-
-- Node.js + Express
-- MongoDB + Mongoose
-- Nodemailer (email)
-
-## 📦 Installation
+## Local run
 
 ```bash
-# Clone the repository
-git clone <your-repo-url>
-cd portfolio-web
-
-# Install dependencies
-npm install
-cd client && npm install
-
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your configuration
-
-# Start MongoDB
-mongod
-
-# Run development server
-npm run dev
+cp .env.example .env   # optional
+npm run install-all
+npm run dev:all
 ```
 
-## 🚀 Deployment
+- **Site:** [http://localhost:5173](http://localhost:5173) (Vite proxies `/api` → `:5000`)
+- **API:** [http://localhost:5000/api/health](http://localhost:5000/api/health)
 
-### Frontend (Vercel/Netlify)
+Or two terminals: `npm run dev` and `cd client && npm run dev`.
 
-- Build command: npm run build
-- Output: client/build
-- Add environment variables
+## Edit content
 
-### Backend (Heroku/Railway)
+| File | Purpose |
+|------|---------|
+| `data/profile.json` | Name, bio, skills, social links |
+| `data/projects.json` | Projects (`_id` must be unique string) |
+| `data/experience.json` | Timeline items |
+| `data/contacts.json` | Auto-created; contact form writes here (not in git) |
 
-- Start command: npm start
-- Add MongoDB Atlas URI
-- Configure environment variables
+## GitHub Pages
 
-## 📱 Pages
+Static **client only** on Pages; host the **Express API** elsewhere (Render, Railway, VPS) and set GitHub secret **`VITE_API_URL`**. Set **`ALLOWED_ORIGINS`** on the server for your Pages URL.
 
-- **Home** - Hero, Skills, Projects, About, CTA
-- **Projects** - All projects with filtering
-- **Contact** - Contact form and social links
-- **Graphic Design** - Design portfolio section
+## API
 
-## 🎨 Customization
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/health` | Health + storage hint |
+| GET | `/api/profile` | Profile from `data/profile.json` |
+| GET | `/api/experience` | From `data/experience.json` |
+| GET | `/api/projects` | Query: `category`, `featured=true`, `status` |
+| GET | `/api/projects/:id` | By `_id` |
+| POST | `/api/contact` | Saves to `contacts.json`, optional email |
+| POST/PUT/DELETE | `/api/projects`… | Mutates `projects.json` |
 
-Edit `client/src/pages/Home.js` to update:
+## License
 
-- Your name and title
-- Social links
-- Skills
-- Projects
-
-## 📄 API Endpoints
-
-- GET /api/config - Site configuration
-- GET /api/projects - Projects list
-- POST /api/contact - Contact form
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create feature branch
-3. Commit changes
-4. Push to branch
-5. Open Pull Request
-
-## 📝 License
-
-MIT License
-
-## 👨‍💻 Author
-
-Aman - Student Software Developer & Graphic Designer
-
-- GitHub: @amanthatdoescares
-- LinkedIn: Aman Maurya
+MIT

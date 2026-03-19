@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+client/node_modules/
+
+# Build
+client/dist/
+client/build/
+
+# Local contact form submissions (may contain PII)
+data/contacts.json
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Uploads (user-generated)
+uploads/*
+!uploads/.gitkeep
+
+# OS / IDE
+.DS_Store
+*.log
+.idea/
+.vscode/
+
+# Test / coverage
+coverage/

@@ -1,31 +1,26 @@
 {
   "name": "aman-portfolio",
-  "version": "1.0.0",
-  "description": "MERN Stack Portfolio Website for Aman - Student Software Developer & Graphic Designer",
+  "version": "2.1.0",
+  "description": "MERN stack portfolio — MongoDB, Express, React (Vite), Node. JSON data layer for easy local dev; deploy client to GitHub Pages.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "install-all": "npm install && cd client && npm install",
-    "build": "cd client && npm run build"
+    "dev": "NODE_ENV=development nodemon server.js",
+    "dev:client": "npm run dev --prefix client",
+    "dev:all": "concurrently -n api,web -c blue,green \"npm run dev\" \"npm run dev:client\"",
+    "install-all": "npm install && npm install --prefix client",
+    "build": "npm run build --prefix client"
   },
-  "keywords": [
-    "portfolio",
-    "mern",
-    "react",
-    "node",
-    "express",
-    "mongodb"
-  ],
+  "keywords": ["mern", "portfolio", "mongodb", "express", "react", "node"],
   "author": "Aman",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mongoose": "^8.0.3",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0",
     "nodemailer": "^6.9.7"
   },
   "devDependencies": {

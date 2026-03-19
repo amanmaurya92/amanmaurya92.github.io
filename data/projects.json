@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "p-shoe-store",
+    "title": "The Shoe Store",
+    "description": "Full-stack e-commerce for shoes: catalog, cart, auth, and payment-oriented flow.",
+    "shortDescription": "MERN e-commerce",
+    "technologies": ["React", "Node.js", "Express", "MongoDB"],
+    "category": "web",
+    "githubUrl": "https://github.com/amanthatdoescares/shoe-store",
+    "status": "completed",
+    "isFeatured": true,
+    "order": 1
+  },
+  {
+    "_id": "p-getmyseat",
+    "title": "GetMySeat",
+    "description": "Movie ticket booking with seat selection and booking flow.",
+    "shortDescription": "Ticket booking platform",
+    "technologies": ["React", "Node.js", "MongoDB"],
+    "category": "web",
+    "githubUrl": "https://github.com/amanthatdoescares/getmyseat",
+    "status": "completed",
+    "isFeatured": true,
+    "order": 2
+  },
+  {
+    "_id": "p-sangeet",
+    "title": "Sangeet",
+    "description": "Android music player for local files with Material UI.",
+    "shortDescription": "Android music app",
+    "technologies": ["Java", "Android"],
+    "category": "mobile",
+    "githubUrl": "https://github.com/amanthatdoescares/sangeet",
+    "status": "completed",
+    "isFeatured": false,
+    "order": 3
+  },
+  {
+    "_id": "p-dodge",
+    "title": "The Dodge Game",
+    "description": "Browser arcade game with score and difficulty ramp.",
+    "shortDescription": "JS arcade game",
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "category": "web",
+    "githubUrl": "https://github.com/amanthatdoescares/dodge-game",
+    "status": "completed",
+    "isFeatured": false,
+    "order": 4
+  }
+]
