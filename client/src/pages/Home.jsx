@@ -16,6 +16,8 @@ import {
 import { getProfile, getProjects, getExperiences } from "../lib/api";
 import { fallbackProfile, fallbackProjects } from "../lib/fallbackProfile";
 import ProjectCard from "../components/ProjectCard";
+import ApiErrorBanner from "../components/ApiErrorBanner";
+import LoadingSkeleton from "../components/LoadingSkeleton";
 
 const skillIcons = {
   languages: Code,
@@ -31,25 +33,52 @@ export default function Home() {
   const [projects, setProjects] = useState([]);
   const [experiences, setExperiences] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [apiError, setApiError] = useState(null);
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
+      setLoading(true);
+      setApiError(null);
       try {
-        const [prof, projs, exp] = await Promise.all([
+        const results = await Promise.allSettled([
           getProfile(),
-          getProjects({ featured: "true" }).catch(() => []),
-          getExperiences().catch(() => []),
+          getProjects({ featured: "true" }),
+          getExperiences(),
         ]);
+
+        const [profRes, projsRes, expRes] = results;
+        const anyFailed =
+          profRes.status === "rejected" ||
+          projsRes.status === "rejected" ||
+          expRes.status === "rejected";
+
         if (!cancelled) {
-          setProfile(prof);
-          setProjects(Array.isArray(projs) && projs.length ? projs : []);
-          setExperiences(Array.isArray(exp) ? exp : []);
+          if (profRes.status === "fulfilled") setProfile(profRes.value);
+          else setProfile(fallbackProfile);
+
+          if (projsRes.status === "fulfilled" && Array.isArray(projsRes.value) && projsRes.value.length) {
+            setProjects(projsRes.value);
+          } else {
+            setProjects(fallbackProjects.filter((x) => x.isFeatured));
+          }
+
+          if (expRes.status === "fulfilled" && Array.isArray(expRes.value)) {
+            setExperiences(expRes.value);
+          } else {
+            setExperiences([]);
+          }
+
+          if (anyFailed) {
+            setApiError("Could not reach the API. Showing local content.");
+          }
         }
-      } catch {
+      } catch (e) {
         if (!cancelled) {
           setProfile(fallbackProfile);
-          setProjects(fallbackProjects);
+          setProjects(fallbackProjects.filter((x) => x.isFeatured));
+          setExperiences([]);
+          setApiError("Could not reach the API. Showing local content.");
         }
       } finally {
         if (!cancelled) setLoading(false);
@@ -77,8 +106,10 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <div className="h-10 w-10 animate-spin rounded-full border-2 border-brand-500 border-t-transparent" />
+      <div className="px-4 py-16 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-6xl">
+          <LoadingSkeleton variant="hero" />
+        </div>
       </div>
     );
   }
@@ -87,6 +118,7 @@ export default function Home() {
     <div>
       <section className="relative overflow-hidden px-4 pb-20 pt-16 sm:px-6 sm:pt-24">
         <div className="mx-auto max-w-6xl">
+          <ApiErrorBanner message={apiError} />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -263,13 +295,6 @@ await buildSomethingGreat(stack);`}</code>
             <h2 className="font-display text-3xl font-bold text-slate-900 dark:text-white">
               Experience & education
             </h2>
-            <p className="mt-2 text-slate-600 dark:text-slate-400">
-              Loaded from{" "}
-              <code className="rounded bg-slate-200 px-1 dark:bg-slate-800">
-                GET /api/experience
-              </code>{" "}
-              (backed by <code className="text-sm">data/experience.json</code>)
-            </p>
             <ul className="relative mt-12 space-y-8 border-l-2 border-brand-500/30 pl-8">
               {experiences.map((ex, i) => (
                 <motion.li
@@ -307,13 +332,6 @@ await buildSomethingGreat(stack);`}</code>
               <h2 className="font-display text-3xl font-bold text-slate-900 dark:text-white">
                 Featured work
               </h2>
-              <p className="mt-2 text-slate-600 dark:text-slate-400">
-                Projects from{" "}
-                <code className="rounded bg-slate-200 px-1 dark:bg-slate-800">
-                  GET /api/projects?featured=true
-                </code>{" "}
-                (<code className="text-sm">data/projects.json</code>)
-              </p>
             </div>
             <Link
               to="/projects"

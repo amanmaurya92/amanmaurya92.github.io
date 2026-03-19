@@ -6,8 +6,8 @@ function loadProjects() {
   return readJson("projects.json", []);
 }
 
-function saveProjects(projects) {
-  writeJson("projects.json", projects);
+async function saveProjects(projects) {
+  await writeJson("projects.json", projects);
 }
 
 function matchesFilters(p, { category, featured, status }) {
@@ -50,7 +50,7 @@ exports.createProject = asyncHandler(async (req, res) => {
     ...req.body,
   };
   projects.push(project);
-  saveProjects(projects);
+  await saveProjects(projects);
   res.status(201).json({
     success: true,
     message: "Project created",
@@ -67,7 +67,7 @@ exports.updateProject = asyncHandler(async (req, res) => {
     throw err;
   }
   projects[i] = { ...projects[i], ...req.body, _id: projects[i]._id };
-  saveProjects(projects);
+  await saveProjects(projects);
   res.json({ success: true, message: "Updated", data: projects[i] });
 });
 
@@ -79,6 +79,6 @@ exports.deleteProject = asyncHandler(async (req, res) => {
     err.statusCode = 404;
     throw err;
   }
-  saveProjects(next);
+  await saveProjects(next);
   res.json({ success: true, message: "Deleted" });
 });

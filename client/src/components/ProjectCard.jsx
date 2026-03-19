@@ -16,6 +16,14 @@ export default function ProjectCard({ project, index = 0 }) {
     >
       <div className="absolute inset-0 bg-gradient-to-br from-brand-500/5 via-transparent to-cyan-500/5 opacity-0 transition group-hover:opacity-100" />
       <div className="relative flex flex-1 flex-col p-6">
+        {project.imageUrl && (
+          <img
+            src={project.imageUrl}
+            alt={project.title || "Project image"}
+            className="mb-3 aspect-video w-full rounded-xl object-cover bg-slate-900/10"
+            loading="lazy"
+          />
+        )}
         <div className="mb-3 flex flex-wrap gap-2">
           {(project.technologies || []).slice(0, 4).map((t) => (
             <span

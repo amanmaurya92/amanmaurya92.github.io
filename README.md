@@ -17,6 +17,23 @@ npm run dev:all
 
 Or two terminals: `npm run dev` and `cd client && npm run dev`.
 
+## Vercel deployment (frontend only)
+
+GitHub Pages/Vercel cannot run the Express API from the same static build, so deploy the **frontend** to Vercel and host the **API** separately.
+
+In Vercel project settings (from the repo root):
+
+- Install command: `npm run install-all`
+- Build command: `npm run build`
+- Output directory: `client/dist`
+- Environment variable (required if API is separate): `VITE_API_URL`
+  - Set it to your API origin (example: `https://portfolio-api.onrender.com`)
+  - It must NOT include `/api` and should have no trailing slash.
+
+Then on your API host, set `ALLOWED_ORIGINS` to include your deployed Vercel site origin(s), e.g. `https://your-vercel-app.vercel.app`.
+
+If you want to use the project mutation endpoints from an external admin tool, set `ADMIN_API_KEY` on the API host as well.
+
 ## Edit content
 
 | File | Purpose |

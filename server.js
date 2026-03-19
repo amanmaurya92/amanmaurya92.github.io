@@ -6,8 +6,17 @@ const morgan = require("morgan");
 const path = require("path");
 const { ensureContactsFile } = require("./data/jsonStore");
 const errorHandler = require("./middleware/errorHandler");
+const validateContent = require("./config/contentValidator");
 
 ensureContactsFile();
+
+// Fail fast on malformed content so the UI doesn't break silently.
+try {
+  validateContent();
+} catch (e) {
+  console.error("Content validation failed:", e.message);
+  process.exit(1);
+}
 
 const app = express();
 

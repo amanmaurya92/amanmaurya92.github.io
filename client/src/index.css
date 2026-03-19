@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --surface: 248 250 252;
-  --surface-muted: 241 245 249;
-  --grid: 15 23 42;
-  --glow: 12 156 224;
-  --text: 15 23 42;
+  --surface: 255 250 253;
+  --surface-muted: 247 241 255;
+  --grid: 255 60 196;
+  --glow: 255 31 191;
+  --text: 17 24 39;
   --text-muted: 71 85 105;
 }
 
 .dark {
   --surface: 15 23 42;
-  --surface-muted: 30 41 59;
-  --grid: 148 163 184;
-  --glow: 56 189 248;
+  --surface-muted: 28 31 48;
+  --grid: 167 139 250;
+  --glow: 255 31 191;
   --text: 248 250 252;
-  --text-muted: 148 163 184;
+  --text-muted: 156 163 175;
 }
 
 html {
@@ -28,7 +28,7 @@ body {
   @apply bg-surface text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300;
   background-image: theme(backgroundImage.glow-radial),
     theme(backgroundImage.grid-pattern);
-  background-size: 100% 100%, 48px 48px;
+  background-size: 100% 100%, 44px 44px;
 }
 
 ::selection {

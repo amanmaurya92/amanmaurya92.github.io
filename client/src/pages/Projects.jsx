@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { getProjects } from "../lib/api";
 import { fallbackProjects } from "../lib/fallbackProfile";
 import ProjectCard from "../components/ProjectCard";
+import ApiErrorBanner from "../components/ApiErrorBanner";
+import LoadingSkeleton from "../components/LoadingSkeleton";
 
 const categories = [
   { id: "", label: "All" },
@@ -16,11 +18,20 @@ export default function Projects() {
   const [list, setList] = useState([]);
   const [filter, setFilter] = useState("");
   const [loading, setLoading] = useState(true);
+  const [apiError, setApiError] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
+    setApiError(null);
     getProjects()
-      .then((data) => setList(Array.isArray(data) && data.length ? data : fallbackProjects))
-      .catch(() => setList(fallbackProjects))
+      .then((data) => {
+        if (Array.isArray(data) && data.length) setList(data);
+        else setList(fallbackProjects);
+      })
+      .catch(() => {
+        setList(fallbackProjects);
+        setApiError("Could not reach the API. Showing local projects.");
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -39,6 +50,7 @@ export default function Projects() {
           <h1 className="font-display text-4xl font-bold text-slate-900 dark:text-white">
             Projects
           </h1>
+          <ApiErrorBanner message={apiError} />
           <p className="mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
             <strong className="font-semibold text-slate-700 dark:text-slate-300">MERN stack</strong>{" "}
             projects and more—served from Express via{" "}
@@ -64,8 +76,8 @@ export default function Projects() {
         </div>
 
         {loading ? (
-          <div className="flex justify-center py-24">
-            <div className="h-10 w-10 animate-spin rounded-full border-2 border-brand-500 border-t-transparent" />
+          <div className="py-12">
+            <LoadingSkeleton variant="grid" />
           </div>
         ) : (
           <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">

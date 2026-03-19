@@ -3,13 +3,32 @@ const nodemailer = require("nodemailer");
 const asyncHandler = require("../middleware/asyncHandler");
 const { readJson, writeJson, ensureContactsFile } = require("../data/jsonStore");
 
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, (ch) => {
+    switch (ch) {
+      case "&":
+        return "&amp;";
+      case "<":
+        return "&lt;";
+      case ">":
+        return "&gt;";
+      case '"':
+        return "&quot;";
+      case "'":
+        return "&#039;";
+      default:
+        return ch;
+    }
+  });
+}
+
 function loadContacts() {
   ensureContactsFile();
   return readJson("contacts.json", []);
 }
 
-function saveContacts(contacts) {
-  writeJson("contacts.json", contacts);
+async function saveContacts(contacts) {
+  await writeJson("contacts.json", contacts);
 }
 
 exports.createContact = asyncHandler(async (req, res) => {
@@ -26,7 +45,7 @@ exports.createContact = asyncHandler(async (req, res) => {
     createdAt: new Date().toISOString(),
   };
   contacts.unshift(entry);
-  saveContacts(contacts);
+  await saveContacts(contacts);
 
   if (process.env.EMAIL_USER && process.env.EMAIL_PASSWORD) {
     try {
@@ -43,10 +62,10 @@ exports.createContact = asyncHandler(async (req, res) => {
         subject: `Portfolio: ${subject}`,
         html: `
           <h2>New message</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+          <p><strong>Email:</strong> ${escapeHtml(email)}</p>
           <p><strong>Message:</strong></p>
-          <p>${message.replace(/</g, "&lt;")}</p>
+          <p>${escapeHtml(message)}</p>
         `,
       });
     } catch (e) {

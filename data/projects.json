@@ -2,11 +2,12 @@
   {
     "_id": "p-shoe-store",
     "title": "The Shoe Store",
+    "imageUrl": "/project-images/shoe-store.svg",
     "description": "Full-stack e-commerce for shoes: catalog, cart, auth, and payment-oriented flow.",
     "shortDescription": "MERN e-commerce",
     "technologies": ["React", "Node.js", "Express", "MongoDB"],
     "category": "web",
-    "githubUrl": "https://github.com/amanthatdoescares/shoe-store",
+    "githubUrl": "https://github.com/amanthatdoescares/The-Shoes-Store",
     "status": "completed",
     "isFeatured": true,
     "order": 1
@@ -14,6 +15,7 @@
   {
     "_id": "p-getmyseat",
     "title": "GetMySeat",
+    "imageUrl": "/project-images/getmyseat.svg",
     "description": "Movie ticket booking with seat selection and booking flow.",
     "shortDescription": "Ticket booking platform",
     "technologies": ["React", "Node.js", "MongoDB"],
@@ -26,11 +28,12 @@
   {
     "_id": "p-sangeet",
     "title": "Sangeet",
+    "imageUrl": "/project-images/sangeet.svg",
     "description": "Android music player for local files with Material UI.",
     "shortDescription": "Android music app",
     "technologies": ["Java", "Android"],
     "category": "mobile",
-    "githubUrl": "https://github.com/amanthatdoescares/sangeet",
+    "githubUrl": "https://github.com/amanthatdoescares/Sangeet-The-Music-App",
     "status": "completed",
     "isFeatured": false,
     "order": 3
@@ -38,11 +41,12 @@
   {
     "_id": "p-dodge",
     "title": "The Dodge Game",
+    "imageUrl": "/project-images/dodge-game.svg",
     "description": "Browser arcade game with score and difficulty ramp.",
     "shortDescription": "JS arcade game",
     "technologies": ["HTML", "CSS", "JavaScript"],
     "category": "web",
-    "githubUrl": "https://github.com/amanthatdoescares/dodge-game",
+    "githubUrl": "https://github.com/amanthatdoescares/The-Dodge-Game",
     "status": "completed",
     "isFeatured": false,
     "order": 4
