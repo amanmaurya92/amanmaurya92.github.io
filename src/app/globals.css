@@ -20,6 +20,17 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-violet: var(--accent-violet);
+  --color-accent-green: var(--accent-green);
+  
+  --color-bg-creative: var(--bg-creative);
+  --color-fg-creative: var(--fg-creative);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-cobalt: var(--accent-cobalt);
+  --color-accent-lime: var(--accent-lime);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-editorial: var(--font-outfit);
