@@ -12,7 +12,7 @@ export default function RabbitBase3D() {
       />
 
       {/* Sketchfab Embed Layer with CSS Cropping to hide forced UI */}
-      <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 z-30 overflow-hidden pointer-events-none">
         <div className="absolute inset-[-100px] w-[calc(100%+200px)] h-[calc(100%+200px)]">
           <iframe 
             title="Poly Art Rabbit" 
@@ -29,7 +29,7 @@ export default function RabbitBase3D() {
       <div className="container mx-auto px-4 pt-32 pb-48 relative z-20 pointer-events-none flex items-center min-h-[100vh]">
         
         {/* Main Brutalist Info Card */}
-        <div className="pointer-events-auto max-w-xl bg-white/40 backdrop-blur-lg border-4 border-black p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+        <div className="pointer-events-auto max-w-xl bg-white border-4 border-black p-8 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
           <div className="border-b-4 border-black pb-6 mb-6">
             <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-[#0052ff] uppercase mb-2">
               Rabbit Base
