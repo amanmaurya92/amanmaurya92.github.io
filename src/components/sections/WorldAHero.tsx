@@ -1,102 +1,84 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 
-const nodes = [
-  { id: "IDEA", label: "IDEA" },
-  { id: "DESIGN", label: "DESIGN" },
-  { id: "FRONTEND", label: "FRONTEND" },
-  { id: "BACKEND", label: "BACKEND" },
-  { id: "DATABASE", label: "DATABASE" },
-  { id: "PRODUCT", label: "PRODUCT" },
+const skills = [
+  "IDEA",
+  "DESIGN",
+  "FRONTEND",
+  "BACKEND",
+  "DATABASE",
+  "PRODUCT"
 ];
 
-function SystemNode({
-  node,
-  index,
-  total,
-  scrollYProgress,
-}: {
-  node: { id: string; label: string };
-  index: number;
-  total: number;
-  scrollYProgress: MotionValue<number>;
-}) {
-  const step = 1 / (total + 1);
-  const start = step * (index + 1);
-  
-  const opacity = useTransform(scrollYProgress, [start - 0.1, start], [0, 1]);
-  const y = useTransform(scrollYProgress, [start - 0.1, start], [20, 0]);
-  const lineOpacity = useTransform(scrollYProgress, [start + 0.05, start + 0.1], [0, 1]);
-  const dotOpacity = useTransform(scrollYProgress, [start, start + 0.05], [0, 1]);
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3
+    }
+  }
+};
 
-  return (
-    <div className="flex flex-col md:flex-row items-center">
-      <motion.div
-        className="w-24 h-16 md:w-32 md:h-32 border border-white/20 bg-surface/50 backdrop-blur-md flex items-center justify-center rounded-xl relative shadow-2xl"
-        style={{ opacity, y }}
-      >
-        <span className="font-mono text-xs md:text-sm text-white/80">{node.label}</span>
-
-        {/* Glowing dot to show activation */}
-        <motion.div
-          className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-accent-cyan shadow-[0_0_15px_#00E5FF]"
-          style={{ opacity: dotOpacity }}
-        />
-      </motion.div>
-
-      {/* Connecting line */}
-      {index < total - 1 && (
-        <motion.div
-          className="w-1 h-8 md:w-8 md:h-1 bg-accent-cyan/50 my-1 md:my-0 mx-0 md:mx-2"
-          style={{ opacity: lineOpacity }}
-        />
-      )}
-    </div>
-  );
-}
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
 
 export default function WorldAHero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  const headerOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
-  const headerY = useTransform(scrollYProgress, [0, 0.15], [0, -50]);
-
   return (
-    <section ref={containerRef} className="relative h-[300vh] bg-background">
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* Subtle Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+    <section className="relative min-h-screen bg-[#0A0A0A] flex flex-col justify-center items-start px-4 md:px-16 overflow-hidden z-10 font-sans">
+      
+      {/* Brutalist Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-start">
+        
+        {/* Main Typographic Hook */}
         <motion.div
-          className="absolute top-1/4 z-10 text-center px-4"
-          style={{ opacity: headerOpacity, y: headerY }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-8"
         >
-          <h2 className="text-4xl md:text-7xl font-bold tracking-tight text-foreground">
-            I turn ideas into <span className="text-accent-cyan">software.</span>
-          </h2>
-          <p className="mt-6 text-white/40 font-mono text-sm uppercase tracking-widest">
-            System Assembly Sequence Initiated
+          <h1 className="text-[12vw] md:text-[9vw] font-black tracking-tight leading-[0.95] text-white uppercase select-none">
+            I TURN <br />
+            IDEAS INTO <br />
+            <span className="text-[#0052ff] drop-shadow-[4px_4px_0px_#ffffff]">SOFTWARE.</span>
+          </h1>
+        </motion.div>
+
+        {/* Subtitle / Description */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+        >
+          <p className="font-mono text-white/60 max-w-2xl text-base md:text-xl uppercase border-l-4 border-[#0052ff] pl-6 py-2 bg-[#111]/50 backdrop-blur-sm shadow-[4px_4px_0px_0px_#000000]">
+            System Assembly Sequence Initiated. Engineering robust, scalable infrastructure from concept to deployment. No soft edges.
           </p>
         </motion.div>
 
-        {/* Nodes Assembly */}
-        <div className="z-10 flex flex-col md:flex-row items-center justify-center w-full max-w-6xl px-4 mt-20 md:mt-0">
-          {nodes.map((node, index) => (
-            <SystemNode
-              key={node.id}
-              node={node}
-              index={index}
-              total={nodes.length}
-              scrollYProgress={scrollYProgress}
-            />
+        {/* Brutalist Tags */}
+        <motion.div 
+          className="flex gap-3 md:gap-4 mt-12 md:mt-20 flex-wrap"
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
+          {skills.map((skill) => (
+            <motion.div 
+              key={skill} 
+              variants={itemVariants}
+              className="border-2 border-white/20 px-6 py-3 font-mono text-sm md:text-base text-white/80 hover:border-[#0052ff] hover:text-[#0052ff] transition-colors cursor-crosshair bg-[#050505] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_#0052ff] hover:-translate-y-1 transform duration-200"
+            >
+              {skill}
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
+        
       </div>
     </section>
   );

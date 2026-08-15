@@ -16,7 +16,7 @@ export default function Footer() {
            viewport={{ once: true }}
            transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl md:text-6xl font-editorial font-bold mb-8">
+          <h2 className="text-5xl md:text-8xl font-editorial font-bold mb-8">
             Two skill sets. <span className="text-white/50 italic">One person.</span>
           </h2>
           <p className="text-lg md:text-2xl font-mono text-white/40 mb-20 max-w-4xl mx-auto leading-loose">
@@ -36,7 +36,7 @@ export default function Footer() {
           <div className="absolute inset-0 bg-accent-cyan/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <a 
             href="mailto:amanmaurya9209@gmail.com" 
-            className="relative flex items-center justify-center px-12 py-6 md:px-16 md:py-8 bg-white text-black font-bold text-2xl md:text-4xl tracking-tighter hover:bg-accent-cyan transition-colors rounded-sm"
+            className="relative flex items-center justify-center px-12 py-6 md:px-16 md:py-8 bg-white text-black font-bold text-3xl md:text-5xl tracking-tighter hover:bg-accent-cyan transition-colors rounded-none"
           >
             LET&apos;S WORK TOGETHER
           </a>

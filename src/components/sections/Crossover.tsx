@@ -42,7 +42,7 @@ export default function Crossover() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-               <h3 className="text-xl md:text-2xl font-mono font-bold mb-8 text-white/50 border-b border-white/10 pb-4">
+               <h3 className="text-2xl md:text-3xl font-sans font-bold mb-8 text-white/50 border-b border-white/10 pb-4">
                  Engineering Toolkit
                </h3>
                <div className="flex flex-wrap gap-3">
@@ -51,7 +51,7 @@ export default function Crossover() {
                      key={skill}
                      onMouseEnter={() => setHoveredSkill(skill)}
                      onMouseLeave={() => setHoveredSkill(null)}
-                     className={`px-4 py-2 rounded border border-white/20 font-mono text-xs md:text-sm transition-all duration-300 cursor-crosshair
+                     className={`px-6 py-2 rounded-none border border-white/20 font-sans font-bold text-lg md:text-xl transition-all duration-300 cursor-crosshair
                        ${hoveredSkill === skill 
                          ? 'bg-accent-cyan text-black border-accent-cyan shadow-[0_0_15px_rgba(0,229,255,0.4)]' 
                          : 'hover:bg-white/5'}`}
@@ -79,7 +79,7 @@ export default function Crossover() {
                      key={skill}
                      onMouseEnter={() => setHoveredSkill(skill)}
                      onMouseLeave={() => setHoveredSkill(null)}
-                     className={`px-6 py-2 rounded-[2rem] border border-white/20 font-editorial text-lg md:text-xl transition-all duration-300 cursor-crosshair
+                     className={`px-6 py-2 rounded-none border border-white/20 font-editorial text-lg md:text-xl transition-all duration-300 cursor-crosshair
                        ${hoveredSkill === skill 
                          ? 'bg-accent-orange text-white border-accent-orange shadow-[0_0_15px_rgba(255,77,0,0.4)]' 
                          : 'hover:bg-white/5'}`}

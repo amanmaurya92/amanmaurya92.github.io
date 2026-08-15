@@ -37,7 +37,7 @@ export default function Landing() {
         
         <div className="flex flex-col items-center">
           <span className="text-accent-cyan font-mono text-xs md:text-sm tracking-widest mb-4">01 &mdash; THE TECHNICAL</span>
-          <h2 className="text-5xl md:text-8xl font-bold tracking-tight text-white">ENGINEER</h2>
+          <h2 className="text-6xl md:text-9xl font-bold tracking-tight text-white">ENGINEER</h2>
           <p className="mt-6 text-white/50 max-w-xs text-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100 font-mono text-sm">
             I turn ideas into software. Architecting scalable, high-performance systems.
           </p>
@@ -62,7 +62,7 @@ export default function Landing() {
             02 &mdash; THE VISUAL
           </motion.span>
           <motion.h2 
-            className="text-5xl md:text-8xl font-editorial font-bold tracking-tighter"
+            className="text-6xl md:text-9xl font-editorial font-bold tracking-tighter"
             animate={{ color: hoveredSide === "right" ? "var(--fg-creative)" : "rgba(255,255,255,1)" }}
           >
             CREATIVE
@@ -83,7 +83,7 @@ export default function Landing() {
       {/* Center Message */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none w-[90%] text-center">
         <motion.div 
-          className="inline-block bg-background/80 px-8 py-4 md:px-12 md:py-6 rounded-full border border-white/10 backdrop-blur-xl"
+          className="inline-block bg-background/80 px-8 py-4 md:px-12 md:py-6 rounded-none border border-white/10 backdrop-blur-xl"
           animate={{
             opacity: hoveredSide ? 0 : 1,
             y: hoveredSide ? 20 : 0,

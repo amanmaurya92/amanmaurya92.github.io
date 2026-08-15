@@ -59,12 +59,12 @@ export default function WorldBPortfolio() {
                     <p className="text-xs md:text-sm uppercase tracking-widest font-mono mb-2 md:mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
                       {work.role}
                     </p>
-                    <h4 className="text-3xl md:text-6xl font-bold tracking-tighter opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
+                    <h4 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200 break-words">
                       {work.client}
                     </h4>
                   </div>
                   <div className="self-end opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
-                    <span className="w-12 h-12 rounded-full border border-white flex items-center justify-center text-white">
+                    <span className="w-12 h-12 rounded-none border border-white flex items-center justify-center text-white">
                       →
                     </span>
                   </div>
