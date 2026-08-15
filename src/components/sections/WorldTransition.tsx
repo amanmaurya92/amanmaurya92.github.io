@@ -11,9 +11,9 @@ export default function WorldTransition() {
     offset: ["start end", "end start"],
   });
 
-  const textScale = useTransform(scrollYProgress, [0.2, 0.6], [1, 3]);
+  const textScale = useTransform(scrollYProgress, [0.2, 0.6], [0.8, 1.5]);
   const textOpacity = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [0, 1, 0]);
-  const filter = useTransform(scrollYProgress, [0.2, 0.6], ["blur(10px)", "blur(0px)"]);
+  const filter = useTransform(scrollYProgress, [0.2, 0.6], ["blur(5px)", "blur(0px)"]);
 
   return (
     <section 
@@ -27,7 +27,8 @@ export default function WorldTransition() {
              scale: textScale, 
              opacity: textOpacity,
              filter: filter,
-             color: "var(--foreground)" // Changes dynamically if we handle theme swap correctly
+             color: "white",
+             mixBlendMode: "difference"
            }}
          >
            But code isn&apos;t the<br/>

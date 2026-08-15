@@ -5,7 +5,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Landing from "@/components/sections/Landing";
 import WorldAHero from "@/components/sections/WorldAHero";
 import WorldAProjects from "@/components/sections/WorldAProjects";
-import WorldAOpenSource from "@/components/sections/WorldAOpenSource";
+import OpenSourceGrid from "@/components/sections/OpenSourceGrid";
+import RabbitBase3D from "@/components/sections/RabbitBase3D";
 import WorldTransition from "@/components/sections/WorldTransition";
 import WorldBHero from "@/components/sections/WorldBHero";
 import WorldBPortfolio from "@/components/sections/WorldBPortfolio";
@@ -22,7 +23,7 @@ export default function Home() {
   // Calculate when we hit the transition section to change the global background
   const backgroundColor = useTransform(
     scrollYProgress,
-    [0, 0.45, 0.55, 0.75, 0.80],
+    [0, 0.55, 0.65, 0.88, 0.92],
     ["#08090C", "#08090C", "#F5F0E8", "#F5F0E8", "#111111"]
   );
 
@@ -40,7 +41,8 @@ export default function Home() {
       <Landing />
       <WorldAHero />
       <WorldAProjects />
-      <WorldAOpenSource />
+      <OpenSourceGrid />
+      <RabbitBase3D />
       <WorldTransition />
       <WorldBHero />
       <WorldBPortfolio />
