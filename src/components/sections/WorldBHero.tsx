@@ -20,7 +20,7 @@ export default function WorldBHero() {
       
       {/* Centered Hero Text */}
       <div className="container mx-auto px-4 mb-32 relative z-20">
-        <h2 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.9] max-w-4xl text-fg-creative mix-blend-darken">
+        <h2 className="text-6xl md:text-9xl font-bold tracking-tighter leading-[0.9] max-w-4xl text-fg-creative mix-blend-darken">
           I make brands<br/>
           <span className="text-accent-orange italic">impossible</span> to ignore.
         </h2>
@@ -31,7 +31,7 @@ export default function WorldBHero() {
 
       {/* Kinetic Typography Marquees */}
       <div className="absolute top-1/2 left-0 w-full flex flex-col gap-2 md:gap-4 opacity-10 pointer-events-none -translate-y-1/2 rotate-[-5deg] scale-110">
-        <motion.div style={{ x: x1 }} className="flex whitespace-nowrap text-[15vw] md:text-[10vw] font-bold tracking-tighter uppercase leading-none">
+        <motion.div style={{ x: x1 }} className="flex whitespace-nowrap text-[18vw] md:text-[12vw] font-bold tracking-tighter uppercase leading-none">
           <span className="mx-8">BRANDING</span>
           <span className="mx-8" style={{ WebkitTextStroke: "2px var(--fg-creative)", color: "transparent" }}>CONTENT</span>
           <span className="mx-8">CAMPAIGNS</span>
@@ -39,7 +39,7 @@ export default function WorldBHero() {
           <span className="mx-8">CONTENT</span>
         </motion.div>
         
-        <motion.div style={{ x: x2, WebkitTextStroke: "2px var(--fg-creative)", color: "transparent" }} className="flex whitespace-nowrap text-[15vw] md:text-[10vw] font-bold tracking-tighter uppercase leading-none">
+        <motion.div style={{ x: x2, WebkitTextStroke: "2px var(--fg-creative)", color: "transparent" }} className="flex whitespace-nowrap text-[18vw] md:text-[12vw] font-bold tracking-tighter uppercase leading-none">
           <span className="mx-8">ART DIRECTION</span>
           <span className="mx-8 text-fg-creative" style={{ WebkitTextStroke: "0" }}>UI/UX</span>
           <span className="mx-8">TYPOGRAPHY</span>
@@ -47,7 +47,7 @@ export default function WorldBHero() {
           <span className="mx-8">UI/UX</span>
         </motion.div>
 
-        <motion.div style={{ x: x3 }} className="flex whitespace-nowrap text-[15vw] md:text-[10vw] font-bold tracking-tighter uppercase leading-none">
+        <motion.div style={{ x: x3 }} className="flex whitespace-nowrap text-[18vw] md:text-[12vw] font-bold tracking-tighter uppercase leading-none">
           <span className="mx-8" style={{ WebkitTextStroke: "2px var(--fg-creative)", color: "transparent" }}>STORYTELLING</span>
           <span className="mx-8">MOTION</span>
           <span className="mx-8" style={{ WebkitTextStroke: "2px var(--fg-creative)", color: "transparent" }}>CANVA</span>

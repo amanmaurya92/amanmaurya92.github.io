@@ -34,7 +34,7 @@ function SystemNode({
   return (
     <div className="flex flex-col md:flex-row items-center">
       <motion.div
-        className="w-24 h-16 md:w-32 md:h-32 border border-white/20 bg-surface/50 backdrop-blur-md flex items-center justify-center rounded-xl relative shadow-2xl"
+        className="w-24 h-16 md:w-32 md:h-32 border border-white/20 bg-surface/50 backdrop-blur-md flex items-center justify-center rounded-none relative shadow-2xl"
         style={{ opacity, y }}
       >
         <span className="font-mono text-xs md:text-sm text-white/80">{node.label}</span>
@@ -77,7 +77,7 @@ export default function WorldAHero() {
           className="absolute top-1/4 z-10 text-center px-4"
           style={{ opacity: headerOpacity, y: headerY }}
         >
-          <h2 className="text-4xl md:text-7xl font-bold tracking-tight text-foreground">
+          <h2 className="text-6xl md:text-9xl font-bold tracking-tight text-foreground">
             I turn ideas into <span className="text-accent-cyan">software.</span>
           </h2>
           <p className="mt-6 text-white/40 font-mono text-sm uppercase tracking-widest">

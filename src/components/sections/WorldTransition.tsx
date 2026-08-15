@@ -22,7 +22,7 @@ export default function WorldTransition() {
     >
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
          <motion.h2 
-           className="text-5xl md:text-8xl font-bold text-center px-4 font-editorial tracking-tighter"
+           className="text-6xl md:text-9xl font-bold text-center px-4 font-editorial tracking-tighter"
            style={{ 
              scale: textScale, 
              opacity: textOpacity,

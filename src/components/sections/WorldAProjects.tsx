@@ -38,7 +38,7 @@ function ProjectCard({ project, index, scrollYProgress }: { project: any, index:
       className="relative w-full max-w-5xl mx-auto mb-32 flex flex-col md:flex-row gap-8 items-center group"
       style={{ opacity, y }}
     >
-      <div className="flex-1 w-full relative aspect-video md:aspect-[4/3] rounded-sm overflow-hidden border border-white/10">
+      <div className="flex-1 w-full relative aspect-video md:aspect-[4/3] rounded-none overflow-hidden border border-white/10">
         <div className="absolute inset-0 bg-accent-cyan/10 mix-blend-overlay z-10 transition-opacity group-hover:opacity-0" />
         <Image
           src={project.image}
@@ -58,7 +58,7 @@ function ProjectCard({ project, index, scrollYProgress }: { project: any, index:
       <div className="flex-1 w-full flex flex-col justify-center">
         <div className="flex gap-3 text-xs font-mono text-white/50 mb-4">
           {project.tech.map((t: string) => (
-            <span key={t} className="px-2 py-1 border border-white/10 rounded-full bg-white/5">
+            <span key={t} className="px-2 py-1 border border-white/10 rounded-none bg-white/5">
               {t}
             </span>
           ))}
@@ -69,10 +69,10 @@ function ProjectCard({ project, index, scrollYProgress }: { project: any, index:
         </p>
         
         <div className="flex gap-4">
-          <a href={project.live} className="flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-sm hover:bg-accent-cyan transition-colors">
+          <a href={project.live} className="flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-none hover:bg-accent-cyan transition-colors">
             <FaExternalLinkAlt className="w-4 h-4" /> Live Demo
           </a>
-          <a href={project.github} className="flex items-center gap-2 px-6 py-3 border border-white/20 hover:border-white text-white rounded-sm transition-colors">
+          <a href={project.github} className="flex items-center gap-2 px-6 py-3 border border-white/20 hover:border-white text-white rounded-none transition-colors">
             <FaGithub className="w-4 h-4" /> Source
           </a>
         </div>
