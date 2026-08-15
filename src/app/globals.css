@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  /* World A (Technical) Colors - Default */
+  --background: #08090C;
+  --foreground: #F4F4F5;
+  --surface: #0F1117;
+  --accent-cyan: #00E5FF;
+  --accent-violet: #B000FF;
+  --accent-green: #CCFF00;
+  
+  /* World B (Creative) Colors */
+  --bg-creative: #F5F0E8;
+  --fg-creative: #111111;
+  --accent-orange: #FF4D00;
+  --accent-cobalt: #0047AB;
+  --accent-lime: #32CD32;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-editorial: var(--font-outfit);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* Use smooth scrolling behavior globally */
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+}

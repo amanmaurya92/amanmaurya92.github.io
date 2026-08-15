@@ -1,64 +1,36 @@
-# Portfolio — MERN stack
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-**M**ongoDB · **E**xpress · **R**eact · **N**ode — this project is built and branded around the MERN stack.
+## Getting Started
 
-The API is **Express + Node** with a **React (Vite)** frontend. For zero-config local runs, profile/projects/experience are served from **`data/*.json`** (MongoDB-style documents without a live DB). Contact submissions go to **`data/contacts.json`** (gitignored). You can swap the file layer for MongoDB + Mongoose using the same route shapes.
-
-## Local run
+First, run the development server:
 
 ```bash
-cp .env.example .env   # optional
-npm run install-all
-npm run dev:all
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-- **Site:** [http://localhost:5173](http://localhost:5173) (Vite proxies `/api` → `:5000`)
-- **API:** [http://localhost:5000/api/health](http://localhost:5000/api/health)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Or two terminals: `npm run dev` and `cd client && npm run dev`.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Vercel deployment (frontend only)
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-GitHub Pages/Vercel cannot run the Express API from the same static build, so deploy the **frontend** to Vercel and host the **API** separately.
+## Learn More
 
-In Vercel project settings (from the repo root):
+To learn more about Next.js, take a look at the following resources:
 
-- Install command: `npm run install-all`
-- Build command: `npm run build`
-- Output directory: `client/dist`
-- Environment variable (required if API is separate): `VITE_API_URL`
-  - Set it to your API origin (example: `https://portfolio-api.onrender.com`)
-  - It must NOT include `/api` and should have no trailing slash.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Then on your API host, set `ALLOWED_ORIGINS` to include your deployed Vercel site origin(s), e.g. `https://your-vercel-app.vercel.app`.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-If you want to use the project mutation endpoints from an external admin tool, set `ADMIN_API_KEY` on the API host as well.
+## Deploy on Vercel
 
-## Edit content
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-| File | Purpose |
-|------|---------|
-| `data/profile.json` | Name, bio, skills, social links |
-| `data/projects.json` | Projects (`_id` must be unique string) |
-| `data/experience.json` | Timeline items |
-| `data/contacts.json` | Auto-created; contact form writes here (not in git) |
-
-## GitHub Pages
-
-Static **client only** on Pages; host the **Express API** elsewhere (Render, Railway, VPS) and set GitHub secret **`VITE_API_URL`**. Set **`ALLOWED_ORIGINS`** on the server for your Pages URL.
-
-## API
-
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/api/health` | Health + storage hint |
-| GET | `/api/profile` | Profile from `data/profile.json` |
-| GET | `/api/experience` | From `data/experience.json` |
-| GET | `/api/projects` | Query: `category`, `featured=true`, `status` |
-| GET | `/api/projects/:id` | By `_id` |
-| POST | `/api/contact` | Saves to `contacts.json`, optional email |
-| POST/PUT/DELETE | `/api/projects`… | Mutates `projects.json` |
-
-## License
-
-MIT
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
